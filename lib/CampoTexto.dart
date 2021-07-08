@@ -8,6 +8,7 @@ class CampoTexto extends StatefulWidget {
 }
 
 class _CampoTextoState extends State<CampoTexto> {
+  bool? _estaSelecionado = false;
   TextEditingController _textEditingController = TextEditingController();
 
   @override
@@ -46,8 +47,12 @@ class _CampoTextoState extends State<CampoTexto> {
           ),
           Text("Comida brasileira"),
           Checkbox(
-            value: false,
-            onChanged: (bool? valor) {},
+            value: _estaSelecionado,
+            onChanged: (bool? valor) {
+              setState(() {
+                _estaSelecionado = valor;
+              });
+            },
           ),
           ElevatedButton(
             onPressed: () {
