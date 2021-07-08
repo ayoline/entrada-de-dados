@@ -45,6 +45,26 @@ class _CampoTextoState extends State<CampoTexto> {
                   color: Colors.amber),
             ),
           ),
+          CheckboxListTile(
+              title: Text("comida brasileira"),
+              subtitle: Text("A melhor comida do mundo"),
+              activeColor: Colors.red,
+              secondary: Icon(Icons.add_box),
+              value: _estaSelecionado,
+              onChanged: (bool? valor) {
+                setState(() {
+                  _estaSelecionado = valor;
+                });
+              }),
+          ElevatedButton(
+            child: Text(
+              "Salvar",
+              style: TextStyle(fontSize: 20),
+            ),
+            onPressed: () {
+              setState(() {});
+            },
+          ),
           Text("Comida brasileira"),
           Checkbox(
             value: _estaSelecionado,
