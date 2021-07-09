@@ -8,6 +8,9 @@ class CampoTexto extends StatefulWidget {
 }
 
 class _CampoTextoState extends State<CampoTexto> {
+  String _label = "";
+  double _valor = 5;
+  bool _escolhaSwitch = false;
   String _escolhaUsuario = "";
   bool? _estaSelecionado = false;
   TextEditingController _textEditingController = TextEditingController();
@@ -57,6 +60,15 @@ class _CampoTextoState extends State<CampoTexto> {
                   _estaSelecionado = valor;
                 });
               }),
+          Text("Comida brasileira"),
+          Checkbox(
+            value: _estaSelecionado,
+            onChanged: (bool? valor) {
+              setState(() {
+                _estaSelecionado = valor;
+              });
+            },
+          ),
           Text("Masculino"),
           Radio(
               value: "m",
@@ -77,6 +89,26 @@ class _CampoTextoState extends State<CampoTexto> {
                 });
                 print("Resultado: $escolha");
               }),
+          Switch(
+              value: _escolhaSwitch,
+              onChanged: (bool valor) {
+                setState(() {
+                  _escolhaSwitch = valor;
+                });
+              }),
+          Text("Recever notificações?"),
+          Slider(
+              value: _valor,
+              min: 0,
+              max: 10,
+              label: _label,
+              divisions: 10,
+              onChanged: (double novoValor) {
+                setState(() {
+                  _valor = novoValor;
+                  _label = "Valor selecionado: $_valor";
+                });
+              }),
           ElevatedButton(
             child: Text(
               "Salvar",
@@ -85,21 +117,6 @@ class _CampoTextoState extends State<CampoTexto> {
             onPressed: () {
               setState(() {});
             },
-          ),
-          Text("Comida brasileira"),
-          Checkbox(
-            value: _estaSelecionado,
-            onChanged: (bool? valor) {
-              setState(() {
-                _estaSelecionado = valor;
-              });
-            },
-          ),
-          ElevatedButton(
-            onPressed: () {
-              print("Valor digitado é: " + _textEditingController.text);
-            },
-            child: Text("Salvar"),
           ),
         ],
       ),
