@@ -8,6 +8,7 @@ class CampoTexto extends StatefulWidget {
 }
 
 class _CampoTextoState extends State<CampoTexto> {
+  String _escolhaUsuario = "";
   bool? _estaSelecionado = false;
   TextEditingController _textEditingController = TextEditingController();
 
@@ -55,6 +56,26 @@ class _CampoTextoState extends State<CampoTexto> {
                 setState(() {
                   _estaSelecionado = valor;
                 });
+              }),
+          Text("Masculino"),
+          Radio(
+              value: "m",
+              groupValue: _escolhaUsuario,
+              onChanged: (String? escolha) {
+                setState(() {
+                  _escolhaUsuario = escolha.toString();
+                });
+                print("Resultado: $escolha");
+              }),
+          Text("Feminino"),
+          Radio(
+              value: "f",
+              groupValue: _escolhaUsuario,
+              onChanged: (String? escolha) {
+                setState(() {
+                  _escolhaUsuario = escolha.toString();
+                });
+                print("Resultado: $escolha");
               }),
           ElevatedButton(
             child: Text(
